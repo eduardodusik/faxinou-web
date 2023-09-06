@@ -1,12 +1,11 @@
-import {Button} from "@/components/ui/button";
+import Hero from "@/components/landing/hero";
+import {Header} from "@/components/landing/header";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Hi from project
-      <Button>
-        hi from
-      </Button>
+    <main className="flex flex-col">
+      <Header/>
+      <Hero/>
     </main>
   )
 }
