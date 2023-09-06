@@ -9,14 +9,15 @@ export default function Hero() {
     <header className="h-screen bg-white p-20">
       <section className="grid md:grid-cols-2 gap-5">
         <div className="flex flex-col gap-3 justify-center">
-          <div className="text-2xl font-bold ">
-            <div className="flex gap-1 xs:flex-col">
-              <span>
+          <div className="text-2xl font-bold">
+            <div className="flex gap-1">
+              <span className="whitespace-nowrap">
                Descubra o prazer de ter
               </span>
-              <TextSlideUp/>
+              <span>
+                <TextSlideUp/>
+              </span>
             </div>
-
             <span>limpa essa semana.</span>
           </div>
           <h2 className="text-neutral-500">
