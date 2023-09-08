@@ -9,7 +9,6 @@ import {revalidatePath} from 'next/cache';
 import {cookies} from 'next/headers';
 import {redirect} from 'next/navigation';
 import {ReactNode} from 'react';
-import {metadata} from "@/app/layout";
 
 export default async function Account() {
   const [session, userDetails] = await Promise.all([
