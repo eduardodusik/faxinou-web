@@ -10,7 +10,7 @@ export default function Hero() {
         <div className="flex flex-col gap-3 justify-center">
           <div className="text-lg md:text-2xl font-bold">
             <div className="flex gap-1">
-              <span className="">
+              <span>
                Descubra o prazer de ter <TextSlideUp/> limpa essa semana.
               </span>
               <span>
