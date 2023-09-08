@@ -165,7 +165,6 @@ const config: Config = {
         }
       },
     },
-
   },
   plugins: [],
 }
