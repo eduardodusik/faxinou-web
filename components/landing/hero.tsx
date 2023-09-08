@@ -6,7 +6,7 @@ import {Button} from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <header className="h-screen bg-white p-4 md:p-20">
+    <header className="bg-white p-4 md:p-20">
       <section className="grid grid-cols-2 gap-5 items-center">
         <div className="flex flex-col gap-3 justify-center">
           <div className="text-lg md:text-2xl font-bold">
