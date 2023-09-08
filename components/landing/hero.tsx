@@ -1,7 +1,8 @@
 import Image from "next/image";
-import heroImage from "@/public/cleaner.png";
+import heroImage from "@/public/hero.png";
 import {Input} from "@/components/ui/input";
 import {TextSlideUp} from "@/components/landing/TextSlideUp";
+import {Button} from "@/components/ui/button";
 
 export default function Hero() {
   return (
@@ -22,9 +23,11 @@ export default function Hero() {
           <h2 className="text-neutral-500 text-sm">
             Agende um serviço de limpeza com um profissional de confiança.
           </h2>
-          <div className="pt-2">
-            <Input placeholder="Qual a cidade?"/>
-          </div>
+          {/*<div className="pt-2">*/}
+          {/*  <Button>*/}
+          {/*    Agendar serviço*/}
+          {/*  </Button>*/}
+          {/*</div>*/}
         </div>
 
         <div className="">

@@ -26,7 +26,7 @@ export const Header = () => {
         </div>
       </div>
       <div className="md:hidden flex justify-center pt-6">
-      <Button className="w-screen">
+      <Button variant="primaryOutline" className="w-screen">
         Seja um profissional
       </Button>
       </div>
