@@ -28,14 +28,14 @@ const RadioItem = ({label, Icon, value}: RadioItemProps) => {
   )
 }
 
-export default function Book () {
+export default function CleanType () {
   return (
     <section className="p-5 md:px-20">
       <h1 className="text-lg font-bold">
         Qual serviço você está procurando?
       </h1>
 
-      <RadioGroup defaultValue="card" className="grid grid-cols-2 gap-4 pt-4">
+      <RadioGroup defaultValue="card" className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
         <RadioItem value="default" Icon={<GiMagicBroom className="text-4xl"/>} label="Limpeza completa" />
         <RadioItem value="hard" Icon={<GiMagicBroom className="text-4xl"/>} label="Limpeza pesada" />
         <RadioItem value="glass" Icon={<GiMagicBroom className="text-4xl"/>} label="Somente uma área" />

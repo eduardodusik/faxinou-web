@@ -10,12 +10,12 @@ export default function Hero() {
       <section className="grid grid-cols-2 gap-5 items-center">
         <div className="flex flex-col gap-3 justify-center">
           <div className="text-lg md:text-2xl font-bold">
-            <div className="flex gap-1">
+            <div className="flex flex-col ">
               <span>
-               Descubra o prazer de ter <TextSlideUp/> limpa essa semana.
+               Descubra o prazer de ter <TextSlideUp/>
               </span>
               <span>
-
+              limpa essa semana.
               </span>
             </div>
             <span></span>

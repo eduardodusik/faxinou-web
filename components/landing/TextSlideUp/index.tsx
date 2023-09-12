@@ -5,9 +5,9 @@ export const TextSlideUp = () => {
       <ul className="block animate-text-slide-5 text-left leading-tight [&_li]:block">
        <li>sua casa</li>
        <li>sua sala</li>
-       <li>sua área</li>
+       <li>sua área gourmet</li>
+       <li>sua varanda</li>
        <li>sua loja</li>
-       <li>sua casa</li>
        <li aria-hidden="true">sua casa</li>
       </ul>
     </span>
