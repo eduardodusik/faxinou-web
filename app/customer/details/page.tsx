@@ -9,10 +9,10 @@ type CounterProps = {
   label: string
 }
 const Counter = ({ label }: CounterProps) => {
-  const [counter, setCounter] = useState(0)
+  const [counter, setCounter] = useState(1)
 
   const decrement = () => {
-    if (counter > 0) {
+    if (counter > 1) {
       setCounter(counter - 1)
     }
   }
@@ -20,7 +20,7 @@ const Counter = ({ label }: CounterProps) => {
   return (
     <div className="flex justify-between items-center bg-zinc-100 rounded-full p-1">
       <div onClick={decrement}
-           className={cx( "border rounded-full  bg-white p-5 flex items-center justify-center", counter === 0 ? "border-zinc-200 text-zinc-200" : "hover:border-rose-500 hover:text-rose-500 text-rose-300 border-rose-300 cursor-pointer")}>
+           className={cx( "border rounded-full  bg-white p-5 flex items-center justify-center", counter === 1 ? "border-zinc-200 text-zinc-200" : "hover:border-rose-500 hover:text-rose-500 text-rose-300 border-rose-300 cursor-pointer")}>
         <div className="font-bold text-xl">
           <RxMinus/>
         </div>
@@ -31,7 +31,7 @@ const Counter = ({ label }: CounterProps) => {
           {counter}
         </span>
         <span>
-          {label}
+          {label}{counter > 1 ? "s" : ""}
         </span>
       </div>
 
@@ -55,8 +55,8 @@ export default function Details() {
   return (
     <div className="flex flex-col gap-3 p-4">
       <span className="font-bold text-xl">Como é o seu espaço?</span>
-      <Counter label="Quartos" />
-      <Counter label="Banheiros" />
+      <Counter label="Quarto" />
+      <Counter label="Banheiro" />
     </div>
   )
 }
