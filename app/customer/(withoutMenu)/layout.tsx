@@ -1,15 +1,18 @@
+"use client";
 import {IoIosArrowBack} from "react-icons/io";
 import Link from "next/link";
+import {useRouter} from "next/navigation";
 
 export default function Layout ({children}: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
   return (
     <section>
       <div className="w-screen p-5 flex items-center">
-        <Link href="book">
+        <div className="cursor-pointer" onClick={router.back}>
           <IoIosArrowBack className="text-rose-500" />
-        </Link>
+        </div>
         <div className="w-screen flex justify-center">
           <h1 className="font-bold">
             Agendar serviço

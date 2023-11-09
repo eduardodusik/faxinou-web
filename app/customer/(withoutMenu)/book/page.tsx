@@ -1,4 +1,4 @@
-import CleanType from "components/BookConfig/CleanType";
+import CleanType from "@/components/BookConfig/CleanType";
 import {Button} from "@/components/ui/button";
 import Description from "@/components/BookConfig/Description";
 import {RadioGroup} from "@/components/ui/radio-group";

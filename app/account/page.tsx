@@ -30,14 +30,11 @@ export default async function Account() {
     const supabase = createServerActionClient<Database>({cookies});
     const session = await getSession();
     const user = session?.user;
-    const {error} = await supabase
-      .from('users')
-      .update({
-        data: {
-          full_name: newName
-        }
-      })
-      .eq('id', user?.id);
+    const { error } = await supabase.from('profiles').upsert({
+      id: user?.id,
+      full_name: newName,
+      updated_at: new Date().toISOString(),
+    })
     if (error) {
       console.log(error);
     }
@@ -92,7 +89,7 @@ export default async function Account() {
                 type="text"
                 name="name"
                 className="w-1/2 p-3 rounded-md bg-zinc-800"
-                defaultValue={userDetails?.metadata?.full_name ?? ''}
+                defaultValue={userDetails?.full_name ?? ''}
                 placeholder="Your name"
                 maxLength={64}
               />

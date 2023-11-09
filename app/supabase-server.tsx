@@ -23,11 +23,14 @@ export async function getSession() {
 
 export async function getUserDetails() {
   const supabase = createServerSupabaseClient();
+  const session = await getSession();
+  const user = session?.user;
   try {
-    const { data: userDetails } = await supabase
-      .from('users')
-      .select('*')
-      .single();
+    const { data: userDetails, error, status } = await supabase
+      .from('profiles')
+      .select(`full_name, username, avatar_url, professional`)
+      .eq('id', user?.id)
+      .single()
     return userDetails;
   } catch (error) {
     console.error('Error:', error);

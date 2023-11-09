@@ -6,8 +6,7 @@ export default function Layout ({children}: {
   children: React.ReactNode;
 }) {
   return (
-    <section className="relative">
-      <BookInput />
+    <section className="relative h-screen">
       {children}
       <Menu />
     </section>
