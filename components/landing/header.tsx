@@ -1,8 +1,7 @@
 import {Button} from "@/components/ui/button";
-import {Avatar} from "@/components/ui/avatar";
-import Link from 'next/link'
+import {ButtonHome} from "@/components/landing/buttonHome";
 
-export const Header = () => {
+export const Header = async () => {
   return (
     <header className="p-5 md:px-20 w-screen">
       <div className="bg-white flex justify-between">
@@ -17,19 +16,14 @@ export const Header = () => {
               Seja um profissional
             </Button>
           </div>
-          <Button asChild variant="primaryOutline">
-            <Link href="signin">
-              Entrar
-            </Link>
-          </Button>
-
-        </div>
+          <ButtonHome />
       </div>
-      <div className="md:hidden flex justify-center pt-6">
-      <Button variant="primaryOutline" className="w-screen">
-        Seja um profissional
-      </Button>
-      </div>
-    </header>
-  )
+    </div>
+  <div className="md:hidden flex justify-center pt-6">
+    <Button variant="primaryOutline" className="w-screen">
+      Seja um profissional
+    </Button>
+  </div>
+</header>
+)
 }

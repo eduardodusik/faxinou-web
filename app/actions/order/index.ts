@@ -28,6 +28,7 @@ type Order = CreateOrder & {
   form: CreateOrder;
   available: boolean;
   user_id: string;
+  created_at: string;
 }
 
 export const listOrders = async () => {
@@ -38,8 +39,30 @@ export const listOrders = async () => {
 
 
   try {
-    const { data } = await supabase.from('orders').select('*').eq('user_id', user?.id)
+    const { data } = await supabase.from('orders').select('*').eq('user_id', user?.id).order('created_at', { ascending: false })
     return data as Order[]
+  } catch (e) {
+    return null
+  }
+}
+
+export const getOrder = async (id: string) => {
+  const supabase = createServerSupabaseClient();
+  console.log({id})
+  try {
+    const { data } = await supabase.from('orders').select('*').eq('id', id).single()
+    return data as Order
+  } catch (e) {
+    return null
+  }
+}
+
+export const finishOrder = async (id: string) => {
+  const supabase = createServerSupabaseClient();
+  console.log({id})
+  try {
+    await supabase.from('orders').update({available: false}).eq('id', id)
+    return true
   } catch (e) {
     return null
   }

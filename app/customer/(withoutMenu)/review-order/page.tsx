@@ -14,9 +14,9 @@ type ItemDetailProps = {
 const ItemDetail = ({value, label}: ItemDetailProps) => {
   return (
     <div className="flex flex-col">
-          <span className="font-bold">
-            {label}
-          </span>
+      <span className="font-bold">
+        {label}
+      </span>
       <span>
         {value}
       </span>
@@ -45,7 +45,7 @@ export default function ReviewOrder() {
     } catch (e) {
       console.log({e})
     }
-  },[order.detailsForm, order.serviceType])
+  }, [order.detailsForm, order.serviceType, router])
 
   return (
     <div className="relative p-10 min-h-screen">
@@ -54,12 +54,13 @@ export default function ReviewOrder() {
       </h1>
 
       <div className="flex flex-col gap-4 pt-5">
-        <ItemDetail label="Tipo de serviço" value={ServiceType[order.serviceType]} />
-        <ItemDetail label="Local" value={order.detailsForm.houseType} />
-        <ItemDetail label="Quantidade de quartos" value={order.detailsForm.roomCount.toString()} />
-        <ItemDetail label="Quantidade de banheiros" value={order.detailsForm.bathCount.toString()} />
-        <ItemDetail label="Necessidades" value={order.detailsForm.options.map(item => Options.find(op => op.id === item)?.label).join(", ") || " - "} />
-        <ItemDetail label="Descrição" value={order.detailsForm.description} />
+        <ItemDetail label="Tipo de serviço" value={ServiceType[order.serviceType]}/>
+        <ItemDetail label="Local" value={order.detailsForm.houseType}/>
+        <ItemDetail label="Quantidade de quartos" value={order.detailsForm.roomCount.toString()}/>
+        <ItemDetail label="Quantidade de banheiros" value={order.detailsForm.bathCount.toString()}/>
+        <ItemDetail label="Necessidades"
+                    value={order.detailsForm.options.map(item => Options.find(op => op.id === item)?.label).join(", ") || " - "}/>
+        <ItemDetail label="Descrição" value={order.detailsForm.description}/>
       </div>
 
       <div className="flex sticky w-100 bottom-0 py-2 bg-popover border-0">
