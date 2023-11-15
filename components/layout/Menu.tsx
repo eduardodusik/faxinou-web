@@ -11,25 +11,38 @@ const Item = ({icon, text, path}: {
 }) => {
   const pathname = usePathname();
   const router = useRouter();
-
+  console.log({pathname})
   const selected = pathname === path;
+  const basePath = pathname.includes('customer') ? '/customer' : '/professional';
+
   return (
-    <div onClick={() => router.push(path)} className={cx("flex flex-col items-center justify-center gap-1 text-neutral-300 cursor-pointer", selected && "text-neutral-950")}>
+    <div onClick={() => router.push(`${basePath}/${path}`)} className={cx("flex flex-col items-center justify-center gap-1 text-neutral-300 cursor-pointer", selected && "text-neutral-950")}>
       {icon}
       <div className="text-xs">{text}</div>
     </div>
   )
 }
 
-export default function Menu () {
+function ProfessionalMenus () {
+  return (
+    <>
+      <Item path="/services" icon={<RxFileText className="text-2xl" />} text="Servicos" />
+    </>
+  )
+}
+
+export default function Menu ({professional}: {
+  professional?: boolean;
+}) {
 
   return (
     <div className="h-16 bg-white border-t border-neutral-100 fixed w-full bottom-0 right-0">
       <div className="flex gap-5 items-center justify-between h-full px-5">
-        <Item path="/customer" icon={<RxHome className="text-2xl" />} text="Início" />
-        <Item path="/customer/orders" icon={<RxFileText className="text-2xl" />} text="Pedidos" />
-        <Item path="/customer/chat" icon={<RxChatBubble className="text-2xl" />} text="Chat" />
-        <Item path="customer/profile" icon={<RxPerson className="text-2xl" />} text="Perfil" />
+        <Item path="/" icon={<RxHome className="text-2xl" />} text="Início" />
+        {!professional && <Item path="/orders" icon={<RxFileText className="text-2xl"/>} text="Pedidos"/>}
+        {professional && <ProfessionalMenus />}
+        <Item path="chat" icon={<RxChatBubble className="text-2xl" />} text="Chat" />
+        <Item path="profile" icon={<RxPerson className="text-2xl" />} text="Perfil" />
       </div>
     </div>
   )

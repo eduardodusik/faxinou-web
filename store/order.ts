@@ -10,7 +10,7 @@ type Order = {
 
 
 export const useOrder = create<Order>((set) => ({
-  serviceType: 'default',
+  serviceType: '',
   detailsForm: {
     bathCount: 1,
     roomCount: 1,
