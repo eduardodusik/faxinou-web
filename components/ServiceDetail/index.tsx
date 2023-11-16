@@ -42,9 +42,9 @@ const FirstStep = ({order}: { order: Order }) => {
     <>
 
       <section className="mt-4 border-b border-zinc-200 p-5">
-        <div className="flex items-start gap-6">
+        <div className="flex flex-col md:flex-row items-start gap-6">
 
-          <img src={serviceType?.imageUrl} className="rounded h-[100px] w-[100px]" alt="limpeza completa"
+          <img src={serviceType?.imageUrl} className="rounded h-auto w-full md:w-[100px]" alt="limpeza completa"
                width={100}
                height={100}/>
           <div className="flex flex-col gap-1">
