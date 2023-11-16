@@ -27,7 +27,9 @@ type ItemDetailProps = {
 const ItemDetail = ({label, icon}: ItemDetailProps) => {
   return (
     <div className="p-6 flex gap-3 items-center border-zinc-200 border-b">
+      <div className="min-w-[30px]">
       {icon}
+      </div>
       <span className="text-zinc-500 normal-case">
       {label}
       </span>
