@@ -2,12 +2,12 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import {cx} from "class-variance-authority";
 import {Button} from "@/components/ui/button";
-import {acceptInterested, Interested} from "@/app/actions/order";
+import {acceptInterested, InterestedWithProfile} from "@/app/actions/order";
 import {useState} from "react";
 import {revalidatePath} from "next/cache";
 
 type SelectProfessionalProps = {
-  interested: Interested
+  interested: InterestedWithProfile
 }
 
 

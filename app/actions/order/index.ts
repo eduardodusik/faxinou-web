@@ -139,7 +139,7 @@ export type Profile = {
   }
 }
 
-type InterestedWithProfile = Interested & Profile
+export type InterestedWithProfile = Interested & Profile
 
 export const getInterestedInOrder = async (orderId: string) => {
   const supabase = createServerSupabaseClient();
