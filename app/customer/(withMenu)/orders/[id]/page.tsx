@@ -4,6 +4,7 @@ import Link from "next/link";
 import {UpdateOrder} from "@/app/customer/(withMenu)/orders/[id]/updateOrder";
 import {Button} from "@/components/ui/button";
 import {SelectProfessional} from "@/app/customer/(withMenu)/orders/[id]/selectProfessional";
+import {serviceTypes} from "@/store/constants";
 
 export const dynamic = 'force-dynamic'
 
@@ -20,7 +21,11 @@ export default async function OrderDetail({params}: { params: { id: string } }) 
 
       <span className="font-bold pt-4">Detalhes do serviço</span>
 
-      <span>preencher com informações</span>
+      <div className="flex flex-col">
+        <span>{serviceTypes.find(x => x.key === response?.form.serviceType)?.label}</span>
+        <span>Endereço: {response?.form.address}</span>
+        <span>Local: {response?.form.houseType}</span>
+      </div>
 
       <span className="pt-5 font-bold">Pessoas interessadas</span>
 

@@ -12,9 +12,9 @@ export const Header = async () => {
         <div className="flex gap-2">
 
           <div className="hidden md:inline-flex">
-            <Button>
-              Seja um profissional
-            </Button>
+            {/*<Button>*/}
+            {/*  Seja um profissional*/}
+            {/*</Button>*/}
           </div>
           <ButtonHome />
       </div>
