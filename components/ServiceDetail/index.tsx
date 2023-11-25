@@ -18,6 +18,7 @@ import {Textarea} from "@/components/ui/textarea";
 import {FormProvider, useForm, useFormContext} from "react-hook-form";
 import {DetailsForm} from "@/app/customer/(withoutMenu)/details/page";
 import {Input} from "@/components/ui/input";
+import {useRouter} from "next/navigation";
 
 type ItemDetailProps = {
   label: string;
@@ -61,8 +62,8 @@ const FirstStep = ({order}: { order: Order }) => {
       </section>
 
       <section>
-        <ItemDetail label={`Rua Mem de Sá, 230, apto 203, Bairro Primor, Sapucaia do Sul`} icon={<CiMap/>}/>
-        <ItemDetail label="20/11/2023 as 08h" icon={<RxCalendar/>}/>
+        <ItemDetail label={order.form?.address || ''} icon={<CiMap/>}/>
+        {/*<ItemDetail label="20/11/2023 as 08h" icon={<RxCalendar/>}/>*/}
         <ItemDetail label={order.form.houseType} icon={<MdOutlineMapsHomeWork/>}/>
         <ItemDetail label={`${order.form.roomCount} Quartos`} icon={<LuBedDouble/>}/>
         <ItemDetail label={`${order.form.roomCount} Banheiros`} icon={<PiBathtub/>}/>
@@ -133,9 +134,9 @@ const SecondStep = ({order}: { order: Order }) => {
 }
 
 
-const Content = ({order}: { order: Order }) => {
+const Content = ({order, interested}: { order: Order; interested: boolean }) => {
   const [showingecondStep, setShowingecondStep] = useState(false)
-  const [successOnSave, setSuccessOnSave] = useState<boolean | null>(null)
+  const [successOnSave, setSuccessOnSave] = useState<boolean | null>(interested || null)
 
   const handleNextStep = () => {
     if (!showingecondStep) {
@@ -152,18 +153,18 @@ const Content = ({order}: { order: Order }) => {
   const onSubmit = useCallback(async () => {
     const response = await setInterestingInOrder(order.id, form.getValues())
     setSuccessOnSave(response)
+    setShowingecondStep(false)
   }, [form, order.id])
 
-  if (successOnSave) {
-   return (
-     <div>pedido enviado com sucesso</div>
-   )
-  }
 
     return (
       <FormProvider {...form}>
 
         <>
+          {successOnSave && (
+            <section className="w-full flex items-center font-semibold justify-center mt-4 bg-rose-400 text-white rounded p-5">Você manifestou interesse nesse serviço</section>
+
+          )}
           {!showingecondStep && <FirstStep order={order}/>}
           {showingecondStep && <SecondStep order={order}/>}
 
@@ -174,21 +175,20 @@ const Content = ({order}: { order: Order }) => {
                 Voltar
               </Button>
             )}
-            <Button className="w-full" onClick={handleNextStep}>
+            {!successOnSave && <Button className="w-full" onClick={handleNextStep}>
               Manifestar interesse
-            </Button>
+            </Button>}
           </div>
         </>
       </FormProvider>
     )
 }
 
-export const ServiceDetail = ({order}: { order: Order }) => {
-
-
+export const ServiceDetail = ({order, interested}: { order: Order; interested: boolean }) => {
+  const router = useRouter();
   return (
+    <Dialog.Root open modal onOpenChange={() => router.back()}>
     <Dialog.Portal>
-
       <Dialog.Overlay
         className="fixed inset-0 z-50 bg-background/80 backdrop-blur-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"/>
       <Dialog.Content
@@ -200,9 +200,11 @@ export const ServiceDetail = ({order}: { order: Order }) => {
           <div className="w-full flex justify-center mt-1">
             <div className="bg-zinc-200 rounded-full h-2 w-10"/>
           </div>
-          <Content order={order}/>
+          <Content order={order} interested={interested} />
         </section>
       </Dialog.Content>
     </Dialog.Portal>
+    </Dialog.Root>
+
   )
 }

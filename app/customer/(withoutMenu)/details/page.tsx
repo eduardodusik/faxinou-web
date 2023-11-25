@@ -12,6 +12,7 @@ import {useOrder} from "@/store/order";
 import {Button} from "@/components/ui/button";
 import {useRouter} from "next/navigation";
 import {Options} from "@/app/customer/(withoutMenu)/details/options";
+import {Input} from "@/components/ui/input";
 
 type CounterProps = {
   label: string
@@ -57,12 +58,12 @@ const Counter = ({label, counter, setCounter}: CounterProps) => {
 
 export type DetailsForm = {
   roomCount: number
+  address: string;
   bathCount: number
   options: string[]
   houseType: string
   description: string
 }
-
 
 
 export default function Details() {
@@ -88,6 +89,15 @@ export default function Details() {
       <Form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-6 p-4">
           <span className="font-bold text-xl">Como é o seu espaço?</span>
+
+          <FormField name="address" control={form.control} render={({field}) => (
+            <FormItem>
+              <FormLabel>Endereço</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="Endereço completo"/>
+              </FormControl>
+            </FormItem>
+          )} />
 
           <FormField
             name="houseType"

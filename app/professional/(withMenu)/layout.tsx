@@ -1,13 +1,17 @@
 import React from "react";
 import Menu from "@/components/layout/Menu";
 
-export default function Layout ({children}: {
+export default async function Layout({children, order}: {
   children: React.ReactNode;
+  order: React.ReactNode
+
 }) {
+
   return (
     <section className="relative h-screen">
       {children}
-      <Menu  professional />
+      {order}
+      <Menu professional/>
     </section>
   )
 }

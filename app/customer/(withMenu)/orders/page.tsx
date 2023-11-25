@@ -2,10 +2,24 @@ import {listOrders} from "@/app/actions/order";
 import {serviceTypes} from "@/store/constants";
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic'
 
 export default async function Orders() {
   const response = await listOrders()
   console.log(response)
+
+  if (!response?.length) {
+    return (
+      <div className="flex flex-col pt-5 items-center w-full justify-center">
+        Parece que você ainda não realizou pedidos.
+
+        <Link className="text-rose-500 font-bold ml-2" href="/customer/book">
+          Clique aqui para solicitar um serviço
+        </Link>
+      </div>
+    )
+  }
+
   return (
     <div className="flex flex-col gap-4 p-6">
       {response?.map(item => (

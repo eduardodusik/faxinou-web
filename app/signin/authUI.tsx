@@ -7,6 +7,7 @@ import {getURL} from "@/lib/utils";
 
 export default function AuthUI() {
   const {supabase} = useSupabase();
+
   return (
     <div className="flex flex-col space-y-4">
       <Auth

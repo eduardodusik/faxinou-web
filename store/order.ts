@@ -12,6 +12,7 @@ type Order = {
 export const useOrder = create<Order>((set) => ({
   serviceType: '',
   detailsForm: {
+    address: '',
     bathCount: 1,
     roomCount: 1,
     description: '',

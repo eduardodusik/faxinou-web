@@ -54,6 +54,7 @@ export default function ReviewOrder() {
       </h1>
 
       <div className="flex flex-col gap-4 pt-5">
+        <ItemDetail label="Endereço" value={order.detailsForm.address}/>
         <ItemDetail label="Tipo de serviço" value={ServiceType[order.serviceType]}/>
         <ItemDetail label="Local" value={order.detailsForm.houseType}/>
         <ItemDetail label="Quantidade de quartos" value={order.detailsForm.roomCount.toString()}/>

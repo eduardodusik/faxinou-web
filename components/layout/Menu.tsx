@@ -41,7 +41,7 @@ export default function Menu ({professional}: {
         <Item path="/" icon={<RxHome className="text-2xl" />} text="Início" />
         {!professional && <Item path="/orders" icon={<RxFileText className="text-2xl"/>} text="Pedidos"/>}
         {professional && <ProfessionalMenus />}
-        <Item path="chat" icon={<RxChatBubble className="text-2xl" />} text="Chat" />
+        {/*<Item path="chat" icon={<RxChatBubble className="text-2xl" />} text="Chat" />*/}
         <Item path="profile" icon={<RxPerson className="text-2xl" />} text="Perfil" />
       </div>
     </div>

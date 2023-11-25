@@ -2,6 +2,7 @@
 import {Button} from "@/components/ui/button";
 import {finishOrder} from "@/app/actions/order";
 import {useCallback, useState} from "react";
+import {revalidatePath} from "next/cache";
 
 type UpdateOrderProps = {
   orderId: string
@@ -30,12 +31,12 @@ export const UpdateOrder = ({orderId, isFinished}: UpdateOrderProps) => {
   }
 
   return (
-    <section className="p-5 rounded border border-zinc-100 flex flex-col gap-4">
-      <span className="font-bold">Pedido finalizado?</span>
-      <span className="text-zinc-500">O profissional escolhido já realizou o serviço?</span>
+    <section className="p-5 rounded border border-zinc-100 flex flex-col gap-4 mt-4">
+      <span className="font-bold">Cencelar pedido</span>
+      <span className="text-zinc-500">Você pode cancelar o seu pedido de serviço.</span>
 
-      <Button onClick={handleFinishOrder}>
-        Sim, finalizar pedido
+      <Button variant="link" onClick={handleFinishOrder}>
+        Cancelar pedido
       </Button>
     </section>
   )
